@@ -24,6 +24,7 @@ public class ProcessadorVendas {
 		properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		properties.put(ConsumerConfig.GROUP_ID_CONFIG, "grupo-processamento");
 		properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+		properties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "10"); /*Define o limite de msg a ser recuperadas por vez*/
 		
 		try(KafkaConsumer<String, Vendas> consumer = new KafkaConsumer<>(properties)){
 			
